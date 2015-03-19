@@ -1,13 +1,9 @@
 module.exports = {
   "angular": {
     "exports": "angular",
-    "depends": {jquery: "jQuery"}
-  },
-  "angular-resource": {
     "depends": {
-      "angular": "angular"
-    },
-    "exports": "angular.module('ngResource').name"
+      jquery: "jQuery"
+    }
   },
   "angular-route": {
     "depends": {
@@ -15,16 +11,10 @@ module.exports = {
     },
     "exports": "angular.module('ngRoute').name"
   },
-  "bootstrap": {
+  "angular-locker": {
     "depends": {
-      "jquery": "jQuery"
-    }
-  },
-  "angular-bootstrap": {
-    "depends": {
-      "angular": "angular",
-      "bootstrap": null
+      "angular": "angular"
     },
-    "exports": "angular.module('ui.bootstrap').name"
+    "exports": "angular.module('angular-locker').name"
   }
 };

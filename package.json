@@ -45,11 +45,9 @@
     "watchify": "^2.2.1"
   },
   "browser": {
-    "bootstrap": "./public/bower_components/bootstrap/dist/js/bootstrap.js",
     "angular": "./public/bower_components/angular/angular.js",
-    "angular-resource": "./public/bower_components/angular-resource/angular-resource.js",
-    "angular-bootstrap": "./public/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
-    "angular-route": "./public/bower_components/angular-route/angular-route.js"
+    "angular-route": "./public/bower_components/angular-route/angular-route.js",
+    "angular-locker": "./public/bower_components/angular-locker/dist/angular-locker.js"
   },
   "browserify-shim": "./shim.js"
 }
