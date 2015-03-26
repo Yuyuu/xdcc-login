@@ -7,7 +7,6 @@ var express = require("express"),
 var morgan = require("morgan");
 var serveStatic = require("serve-static");
 var revision = require("./revision");
-var proxy = require('express-http-proxy');
 
 var app = express();
 
@@ -26,7 +25,7 @@ if ("development" === app.get("env")) {
 
 if ("staging" === app.get("env")) {
   revision.initMap(require("./public/genere/map.json"));
-  app.locals.apiUrl = process.env.API_URL;
+  app.locals.apiUrl = "https://xdcc-api.herokuapp.com";
 }
 
 if ("production" === app.get("env")) {

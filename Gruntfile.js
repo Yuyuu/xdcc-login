@@ -7,7 +7,9 @@ module.exports = function (grunt) {
   var config = {
     pkg: grunt.file.readJSON("package.json"),
     prod: grunt.option("prod") || false,
-    buildDir: "public/genere"
+    deploy: grunt.option("deploy") || false,
+    buildDir: "public/genere",
+    deployDir: "../xdcc-webapp/subapp/xdcc-login"
   };
 
   grunt.util._.extend(config, loadConfig("./tasks/options/"));
@@ -23,6 +25,8 @@ module.exports = function (grunt) {
   grunt.registerTask("default", ["clean", "dev"]);
 
   grunt.registerTask("build", ["clean", "assets"]);
+
+  grunt.registerTask("deploy", ["build", "copy:deploy"]);
 
 
   function loadConfig(path) {
