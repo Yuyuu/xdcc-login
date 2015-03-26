@@ -28,7 +28,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask("deploy", ["build", "copy:deploy"]);
 
-
   function loadConfig(path) {
     var glob = require("glob");
     var object = {};
