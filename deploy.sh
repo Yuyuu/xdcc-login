@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grunt deploy --prod=true --deploy
+grunt deploy --prod=true --deploy=staging

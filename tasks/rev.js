@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("writeSummary", function () {
     grunt.task.requires("filerev");
-    var replaceString = grunt.config.get("deploy") ? "/login" : "";
+    var replaceString = grunt.config.get("deploy") === "staging" ? "/login" : "";
     var result = {};
     var keys = Object.keys(grunt.filerev.summary);
     keys.forEach(function (key) {

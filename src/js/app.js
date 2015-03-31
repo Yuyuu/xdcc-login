@@ -16,7 +16,8 @@ angular.module("login", [
   }])
 
   .config(["lockerProvider", function config(lockerProvider) {
-    lockerProvider.setDefaultDriver("local")
+    lockerProvider
+      .setDefaultDriver("local")
       .setDefaultNamespace(false)
       .setSeparator(".")
       .setEventsEnabled(false);
