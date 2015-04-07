@@ -30,7 +30,7 @@ if ("staging" === app.get("env")) {
 
 if ("production" === app.get("env")) {
   revision.initMap(require("./public/genere/map.json"));
-  app.locals.apiUrl = process.env.API_URL;
+  app.locals.apiUrl = "https://xdcc-api.herokuapp.com";
 }
 
 i18n.serveClientScript(app)
