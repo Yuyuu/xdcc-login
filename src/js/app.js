@@ -1,8 +1,11 @@
 "use strict";
+
 var angular = require("angular");
 
 angular.module("login", [
+  require("angular-sanitize"),
   require("angular-route"),
+  require("./translation"),
   require("./authentication")
 ])
   .config(["$routeProvider", function ($routeProvider) {

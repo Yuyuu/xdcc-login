@@ -19,18 +19,15 @@ i18n.init({
 });
 
 if ("development" === app.get("env")) {
-  app.locals.apiUrl = "http://localhost:8089";
   app.use(morgan("combined"));
 }
 
 if ("staging" === app.get("env")) {
   revision.initMap(require("./public/genere/map.json"));
-  app.locals.apiUrl = "https://xdcc-api.herokuapp.com";
 }
 
 if ("production" === app.get("env")) {
   revision.initMap(require("./public/genere/map.json"));
-  app.locals.apiUrl = "https://xdcc-api.herokuapp.com";
 }
 
 i18n.serveClientScript(app)

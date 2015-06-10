@@ -5,6 +5,12 @@ module.exports = {
       jquery: "jQuery"
     }
   },
+  "angular-sanitize": {
+    "depends": {
+      "angular": "angular"
+    },
+    "exports": "angular.module('ngSanitize').name"
+  },
   "angular-route": {
     "depends": {
       "angular": "angular"
@@ -16,5 +22,11 @@ module.exports = {
       "angular": "angular"
     },
     "exports": "angular.module('angular-locker').name"
+  },
+  "ng-i18next": {
+    "depends": {
+      "angular": "angular"
+    },
+    "exports": "angular.module('jm.i18next').name"
   }
 };
