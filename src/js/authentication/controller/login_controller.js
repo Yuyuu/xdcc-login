@@ -3,29 +3,32 @@
 module.exports = LoginController;
 
 /* @ngInject */
-function LoginController($scope, $window, AuthenticationService) {
-  $scope.credentials = {
+function LoginController($window, AuthenticationService, $location) {
+  var it = this;
+  it.redirectReason = $location.search().r;
+  it.credentials = {
     login: undefined,
     password: undefined
   };
 
-  $scope.connect = connect;
+  it.connect = connect;
 
   function connect(credentials) {
-    delete $scope.errors;
+    delete it.redirectReason;
+    delete it.errors;
     AuthenticationService.connect(credentials).then(
       function () {
         resetCredentials();
         $window.location = "/";
       },
       function (response) {
-        $scope.errors = response.data.errors;
+        it.errors = response.data.errors;
       }
     );
   }
 
   function resetCredentials() {
-    $scope.credentials.login = undefined;
-    $scope.credentials.password = undefined;
+    it.credentials.login = undefined;
+    it.credentials.password = undefined;
   }
 }

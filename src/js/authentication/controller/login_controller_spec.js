@@ -5,18 +5,18 @@ var sinon = require("sinon");
 
 describe("LoginController", function () {
 
-  var $scope, $window, AuthenticationService, controller;
+  var $window, AuthenticationService, $location, controller;
 
   beforeEach(function () {
-    $scope = {};
     $window = {
       location: ""
     };
     AuthenticationService = {
       connect: sinon.stub()
     };
+    $location = {search: sinon.stub().returns({})};
     var LoginController = require("./login_controller");
-    controller = new LoginController($scope, $window, AuthenticationService);
+    controller = new LoginController($window, AuthenticationService, $location);
   });
 
   it("must be defined", function () {
@@ -24,7 +24,7 @@ describe("LoginController", function () {
   });
 
   it("must not have any errors at start", function () {
-    expect($scope.errors).to.not.be.defined;
+    expect(controller.errors).to.not.be.defined;
   });
 
   it("must handle the connection success of a user", function () {
@@ -44,17 +44,17 @@ describe("LoginController", function () {
       }
     });
 
-    $scope.connect(credentials);
+    controller.connect(credentials);
 
     expect(AuthenticationService.connect).to.have.been.calledWith(credentials);
 
-    expect($scope.credentials.login).to.not.be.defined;
-    expect($scope.credentials.password).to.not.be.defined;
+    expect(controller.credentials.login).to.not.be.defined;
+    expect(controller.credentials.password).to.not.be.defined;
     expect($window.location).to.equal("/");
   });
 
   it("must must handle errors happening at connection", function () {
-    var credentials = $scope.credentials = {
+    var credentials = controller.credentials = {
       login: "login",
       password: "password"
     };
@@ -73,13 +73,13 @@ describe("LoginController", function () {
       }
     });
 
-    $scope.connect(credentials);
+    controller.connect(credentials);
 
     expect(AuthenticationService.connect).to.have.been.calledWith(credentials);
 
-    expect($scope.errors.length).to.equal(1);
-    expect($scope.errors[0].message).to.equal("AN_ERROR");
-    expect($scope.credentials.login).to.equal(credentials.login);
-    expect($scope.credentials.password).to.equal(credentials.password);
+    expect(controller.errors.length).to.equal(1);
+    expect(controller.errors[0].message).to.equal("AN_ERROR");
+    expect(controller.credentials.login).to.equal(credentials.login);
+    expect(controller.credentials.password).to.equal(credentials.password);
   });
 });
