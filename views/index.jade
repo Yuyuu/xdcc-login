@@ -22,7 +22,7 @@ html
             a(href="/")
               span Logo xdcc-webapp
           p.title= t("app.login.form.title")
-          .alert.alert-warning(ng-if="model.redirectReason", ng-i18next="app.login.errors.{{model.redirectReason}}", role="alert")
+          .alert.alert-warning(ng-cloak="", ng-if="model.redirectReason", ng-i18next="app.login.errors.{{model.redirectReason}}", role="alert")
           div
             form(role="form", name="login", ng-submit="model.connect(model.credentials)")
               .form-group.has-feedback
